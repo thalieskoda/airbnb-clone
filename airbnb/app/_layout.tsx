@@ -63,7 +63,7 @@ export default function RootLayout() {
     <ClerkProvider
       publishableKey={CLERK_PUBLISHABLE_KEY!}
       tokenCache={tokenCache}>
-      <RootLayoutNav />;
+      <RootLayoutNav />
     </ClerkProvider>
   );
 }
