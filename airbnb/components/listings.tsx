@@ -13,6 +13,8 @@ import { Link } from "expo-router";
 import { useRef } from "react";
 import { StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import Animated, { FadeInRight, FadeOutLeft } from "react-native-reanimated"
+
 interface Props {
   listings: any[]; //Listing data
   category: string;
@@ -31,9 +33,13 @@ export const Listings = ({ listings: items, category }: Props) => {
 
   const renderRow: ListRenderItem<Result> = ({ item }) => {
     return (
-      <Link href={`/listing/${item.id}`} asChild>
+      <Link
+        href={`/listing/${item.id}`}
+        asChild
+        style={{ backgroundColor: "whitesmoke", margin: 10 }}>
         <TouchableOpacity>
-          <View style={styles.listing}>
+
+          <Animated.View style={styles.listing} entering={FadeInRight} exiting={FadeOutLeft}>
             <Image source={{ uri: item.medium_url }} style={styles.image} />
             <TouchableOpacity
               style={{ position: "absolute", right: 30, top: 30 }}>
@@ -53,7 +59,14 @@ export const Listings = ({ listings: items, category }: Props) => {
                 <Text>{item.review_scores_rating / 20}</Text>
               </View>
             </View>
-          </View>
+            <Text style={{}}>{item.room_type}</Text>
+            <View style={{ flexDirection: "row", gap: 4 }}>
+              <Text >
+                $ {item.price}
+              </Text>
+              <Text>night</Text>
+            </View>
+          </Animated.View>
         </TouchableOpacity>
       </Link>
     );

@@ -5,11 +5,11 @@ import { ExploreHeader } from "@/components/exploreHeader";
 import { Listings } from "@/components/listings";
 import { useState } from "react";
 import { useMemo } from "react";
-import listingsData from "../../assets/data/dummyData.json";
+import {airbnbData} from "../../assets/data/dummyData.js";
 const Page = () => {
   const [category, setCategory] = useState("Tiny homes");
 // when the page reloads, it memorizes the data
-  const items = useMemo(()=> listingsData as any, []);
+  const items = useMemo(()=> airbnbData as any, []);
   const onDataChanged = (category: string) => {
     setCategory(category);
   };
