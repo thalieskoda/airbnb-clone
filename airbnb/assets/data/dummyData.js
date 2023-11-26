@@ -41,7 +41,11 @@ export const airbnbData =[{
     "url" : image1,
     "review_scores_rating":"88",
     "room_type":"single room",
-    "price":"327"
+    "price":"327",
+    "coordinates" : {
+        'latitude':37,
+        'longitude': -122
+    }
 
 }, {
     "id":"2",
@@ -49,7 +53,11 @@ export const airbnbData =[{
     "url" : image1,
     "review_scores_rating":"99",
     "room_type":"private room",
-    "price":"334"
+    "price":"334",
+    "coordinates" : {
+        'latitude':120,
+        'longitude': 122
+    }
 },
 {
     "id":"3",
@@ -57,7 +65,11 @@ export const airbnbData =[{
     "url" : image1,
     "review_scores_rating":"95",
     "room_type":"house",
-    "price":"123"
+    "price":"123",
+    "coordinates" : {
+        'latitude':120,
+        'longitude': 122
+    }
 },
 {
     "id":"4",
@@ -65,7 +77,11 @@ export const airbnbData =[{
     "url" : image1,
     "review_scores_rating":"93",
     "room_type":"cottage",
-    "price":"143"
+    "price":"143",
+    "coordinates" : {
+        'latitude':120,
+        'longitude': 122
+    }
 },
 {
     "id":"5",
@@ -73,7 +89,11 @@ export const airbnbData =[{
     "url" : image1,
     "review_scores_rating":"90",
     "room_type":"condo",
-    "price":"500"
+    "price":"500",
+    "coordinates" : {
+        'latitude':120,
+        'longitude': 122
+    }
 },
 {
     "id":"6",
@@ -81,5 +101,9 @@ export const airbnbData =[{
     "url" : image1,
     "review_scores_rating":"70",
     "room_type":"mansion",
-    "price":"224"
+    "price":"224",
+    "coordinates" : {
+        'latitude':120,
+        'longitude': 122
+    }
 }]

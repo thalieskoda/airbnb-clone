@@ -6,6 +6,8 @@ import { Listings } from "@/components/listings";
 import { useState } from "react";
 import { useMemo } from "react";
 import {airbnbData} from "../../assets/data/dummyData.js";
+import { ListingsMaps } from "../../components/listings-map"
+
 const Page = () => {
   const [category, setCategory] = useState("Tiny homes");
 // when the page reloads, it memorizes the data
@@ -20,7 +22,8 @@ const Page = () => {
           header: () => <ExploreHeader onCategoryChanged={onDataChanged} />,
         }}
       />
-      <Listings listings={items} category={category} />
+      {/* <Listings listings={items} category={category} /> */}
+      <ListingsMaps listing={items} />
     </View>
   );
 };
