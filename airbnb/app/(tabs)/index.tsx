@@ -6,7 +6,8 @@ import { Listings } from "@/components/listings";
 import { useState } from "react";
 import { useMemo } from "react";
 import {airbnbData} from "../../assets/data/dummyData.js";
-import { ListingsMaps } from "../../components/listings-map"
+import { ListingsMaps } from "../../components/listings-map";
+import { ListingBottomSheet } from "../../components/listing-bottom-sheet";
 
 const Page = () => {
   const [category, setCategory] = useState("Tiny homes");
@@ -16,7 +17,7 @@ const Page = () => {
     setCategory(category);
   };
   return (
-    <View style={{ flex: 1, marginTop:130}}>
+    <View style={{ flex: 1, marginTop:80}}>
       <Stack.Screen
         options={{
           header: () => <ExploreHeader onCategoryChanged={onDataChanged} />,
@@ -24,6 +25,7 @@ const Page = () => {
       />
       {/* <Listings listings={items} category={category} /> */}
       <ListingsMaps listing={items} />
+      <ListingBottomSheet listing={items} category={category}/>
     </View>
   );
 };

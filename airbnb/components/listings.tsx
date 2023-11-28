@@ -13,18 +13,24 @@ import { Link } from "expo-router";
 import { useRef } from "react";
 import { StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Animated, { FadeInRight, FadeOutLeft } from "react-native-reanimated"
+import Animated, { FadeInRight, FadeOutLeft } from "react-native-reanimated";
+import { BottomSheetFlatList, BottomSheetFlatListMethods } from "@gorhom/bottom-sheet";
 
 interface Props {
   listings: any[]; //Listing data
   category: string;
+  refresh: number;
 }
-export const Listings = ({ listings: items, category }: Props) => {
+export const Listings = ({ listings: items, category, refresh }: Props) => {
   const [loading, setLoading] = useState(false);
-  const listRef = useRef<FlatList>(null);
-
+  const listRef = useRef<BottomSheetFlatListMethods>(null);
   useEffect(() => {
-    console.log("RELOAD LISTING:", items.length);
+    if (refresh) {
+      listRef.current?.scrollToOffset({ offset: 0, animated: true });
+    }
+    console.log("refreshlisting");
+  }, [refresh]);
+  useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -38,8 +44,10 @@ export const Listings = ({ listings: items, category }: Props) => {
         asChild
         style={{ backgroundColor: "whitesmoke", margin: 10 }}>
         <TouchableOpacity>
-
-          <Animated.View style={styles.listing} entering={FadeInRight} exiting={FadeOutLeft}>
+          <Animated.View
+            style={styles.listing}
+            entering={FadeInRight}
+            exiting={FadeOutLeft}>
             <Image source={{ uri: item.medium_url }} style={styles.image} />
             <TouchableOpacity
               style={{ position: "absolute", right: 30, top: 30 }}>
@@ -61,9 +69,7 @@ export const Listings = ({ listings: items, category }: Props) => {
             </View>
             <Text style={{}}>{item.room_type}</Text>
             <View style={{ flexDirection: "row", gap: 4 }}>
-              <Text >
-                $ {item.price}
-              </Text>
+              <Text>$ {item.price}</Text>
               <Text>night</Text>
             </View>
           </Animated.View>
@@ -73,10 +79,13 @@ export const Listings = ({ listings: items, category }: Props) => {
   };
   return (
     <View style={defaultStyles.container}>
-      <FlatList
+      <BottomSheetFlatList
         renderItem={renderRow}
         ref={listRef}
         data={loading ? [] : items}
+        ListHeaderComponent={
+          <Text style={styles.info}>checkout the airbnb!</Text>
+        }
       />
     </View>
   );
@@ -92,5 +101,10 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 300,
     borderRadius: 10,
+  },
+  info: {
+    textAlign: "center",
+    fontSize: 16,
+    marginTop: 4,
   },
 });
