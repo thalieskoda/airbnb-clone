@@ -112,7 +112,7 @@ const DetailsPage = () => {
         ref={scrollRef}
         scrollEventThrottle={16}>
         <Animated.Image
-          source={{ uri: listing.xl_picture_url }}
+          source={{ uri: listing.url }}
           style={[styles.image, imageAnimatedStyle]}
           resizeMode="cover"
         />
